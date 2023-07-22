@@ -1,0 +1,57 @@
+# https://<your-tenant-initial-domain-name>.b2clogin.com/<your-tenant-initial-domain-name>.onmicrosoft.com/
+spring:
+  cloud:
+    azure:
+      active-directory:
+        b2c:
+          enabled: true
+          profile:
+            tenant-id: bdbea02a-d186-4bc4-94d6-efe6ac215410
+          credential:
+            client-id: 54dde2b0-f714-49c3-9eed-c6b9ed708470
+          app-id-uri: https://s4project.onmicrosoft.com/api/.default
+          base-uri: https://s4project.b2clogin.com
+          user-flows:
+            sign-up-or-sign-in: B2C_1_signin_or_signup
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: mydatabase
+    url: jdbc:sqlserver://eu-az-sql-serv1.database.windows.net:1433;databaseName=s4project;encrypt=true;trustServerCertificate=true;
+    password: '5xvzR9XcggkMaEZz@'
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        jdbc:
+          lob:
+            non_contextual_creation: 'true'
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: 'true'
+          auth: 'true'
+    host: smtp.gmail.com
+    username: fsairlines.global@gmail.com
+    password: uwkahtwfqvogrwke
+    port: '587'
+
+security:
+  cors:
+    origin: http://localhost:3000
+
+springdoc:
+  show-login-endpoint: true
+
+paypal:
+  client-id: "AZtv8J9ajlDoiZflPaFVEwy_ComBYd78xBkYib65BrXSb6PoA4_w6q5MgPSuvmYF_9KyIPibTGYnRP8t"
+  secret-key: "EKQMOr-drhyOL8gQq_a77qsT-bEWoSPfRF-DoQAcE-AyV8DDGfln-5XcyiQDqb33waMgmHBWit29hsHk"
+  mode: "sandbox"
